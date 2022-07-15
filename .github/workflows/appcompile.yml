@@ -7,7 +7,7 @@ on:
   
 jobs:
   Compile:
-    runs-on: macos-12
+    runs-on: macos-11
         
     steps:
       - name: Check out Git repository
