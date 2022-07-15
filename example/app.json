@@ -1,0 +1,7 @@
+{
+  "name": "PluginGeofencingExample",
+  "displayName": "Plugin Geofencing Example",
+  "woosmapkey": "b98390e7-8750-49ac-88bd-451e7763b21c",
+  "profile": "liveTracking",
+  "testing": true
+}

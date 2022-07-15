@@ -1,0 +1,47 @@
+name: Plugin Compile
+
+on:
+  push:
+    branches:
+      - "dev/vmiosbuild"
+  
+jobs:
+  Compile:
+    runs-on: macos-12
+        
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+        
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+         node-version: 16.x
+         registry-url: https://registry.npmjs.org/
+         
+      - name: Update swift version
+        uses: swift-actions/setup-swift@v1
+        with:
+          swift-version: "5.6.1"
+         
+      - name: Build it 
+        run: |
+          yarn
+          cd example
+          yarn
+          cd ios
+          pod install --repo-update
+          
+      - name: run ios tests
+        run: |
+          yarn example run ios
+          
+#       - name: run android tests
+#         uses: reactivecircus/android-emulator-runner@v2
+#         with:
+#           api-level: 28
+#           profile: pixel_2
+#           emulator-build: 6110076
+#           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+#           disable-animations: false
+#           script: yarn example run android
