@@ -3,7 +3,7 @@ name: Plugin Compile
 on:
   push:
     branches:
-      - "dev/vmiosbuild"
+      - "main"
   
 jobs:
   Compile:
