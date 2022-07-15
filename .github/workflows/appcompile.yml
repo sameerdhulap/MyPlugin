@@ -7,7 +7,7 @@ on:
   
 jobs:
   Compile:
-    runs-on: macos-11
+    runs-on: macos-12
         
     steps:
       - name: Check out Git repository
@@ -24,16 +24,17 @@ jobs:
         with:
           swift-version: "5.6.1"
          
-      - name: Build it 
-        run: |
-          yarn
-          cd example
-          yarn
-          cd ios
-          pod install --repo-update
+#       - name: Build it 
+#         run: |
+#           yarn
+#           cd example
+#           yarn
+#           cd ios
+#           pod install --repo-update
           
       - name: run ios tests
         run: |
+          yarn
           yarn example run ios
           
 #       - name: run android tests
